@@ -14,7 +14,7 @@ for _, item in ipairs(lua_directorys) do
     target("lua_lib" .. lua_version)
         set_kind("shared")
         set_prefixname("")
-        set_basename("lua" .. (lua_version == "51" and "5.1" or lua_version))
+        set_basename("lua" .. lua_version)
         add_includedirs(lua_directory .. "/src", {public = true})
         add_files(lua_directory .. "/src/*.c|lua.c|luac.c")
         if is_plat("linux", "bsd") then
@@ -28,7 +28,7 @@ for _, item in ipairs(lua_directorys) do
     target("lua_app" .. lua_version)
         set_kind("binary")
         set_prefixname("")
-        set_basename("lua" .. (lua_version == "51" and "5.1" or lua_version))
+        set_basename("lua" .. lua_version)
         add_deps("lua_lib" .. lua_version)
         add_files(lua_directory .. "/src/lua.c")
         if not is_plat("windows", "mingw") then
@@ -70,4 +70,5 @@ for _, item in ipairs(lua_directorys) do
         else
             add_files(luasocket_directory .. "/src/usocket.c")
         end
+    target_end()
 end
