@@ -103,7 +103,7 @@
 		            LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua"
 #define LUA_CPATH_DEFAULT \
 		"./?.so;"  LUA_CDIR"?.so;" LUA_CDIR"loadall.so;" \
-		"./lib?51.so;" LUA_CDIR"lib?51.so;"
+		"./?51.so;" LUA_CDIR"?51.so;"
 #endif
 
 

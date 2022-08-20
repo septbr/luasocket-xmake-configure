@@ -227,7 +227,7 @@
 #if !defined(LUA_CPATH_DEFAULT)
 #define LUA_CPATH_DEFAULT \
 		LUA_CDIR"?.so;" LUA_CDIR"loadall.so;" "./?.so;" \
-		LUA_CDIR"lib?54.so;" "./lib?54.so"
+		LUA_CDIR"?54.so;" "./?54.so"
 #endif
 
 #endif			/* } */

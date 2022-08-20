@@ -109,7 +109,7 @@
 		LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua;" "./?.lua"
 #define LUA_CPATH_DEFAULT \
 		LUA_CDIR"?.so;" LUA_CDIR"loadall.so;" "./?.so;" \
-    LUA_CDIR"lib?52.so;" "./lib?52.so"
+    LUA_CDIR"?52.so;" "./?52.so"
 #endif			/* } */
 
 

@@ -13,16 +13,17 @@ for _, item in ipairs(lua_directorys) do
 
     target("lua_lib" .. lua_version)
         set_kind("shared")
-        set_prefixname("")
         set_basename("lua" .. lua_version)
         add_includedirs(lua_directory .. "/src", {public = true})
         add_files(lua_directory .. "/src/*.c|lua.c|luac.c")
-        if is_plat("linux", "bsd") then
-            add_defines("LUA_USE_LINUX")
-        elseif is_plat("macosx", "iphoneos") then
-            add_defines("LUA_USE_MACOSX")
+        if is_plat("linux") then
+            add_defines("LUA_USE_POSIX", "LUA_USE_DLOPEN")
+            add_syslinks("dl")
+        elseif is_plat("macosx") then
+            add_defines("LUA_USE_POSIX", "LUA_DL_DYLD")
         elseif is_plat("windows", "mingw") then
             add_defines("LUA_BUILD_AS_DLL")
+            set_prefixname("")
         end
 
     target("lua_app" .. lua_version)
@@ -31,9 +32,6 @@ for _, item in ipairs(lua_directorys) do
         set_basename("lua" .. lua_version)
         add_deps("lua_lib" .. lua_version)
         add_files(lua_directory .. "/src/lua.c")
-        if not is_plat("windows", "mingw") then
-            add_syslinks("dl")
-        end
 
     target("luasocket.mime" .. lua_version)
         set_kind("shared")
